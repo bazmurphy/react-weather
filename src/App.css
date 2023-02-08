@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Montserrat";
+  font-size: 1rem;
+}
+
+body {
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  background-color: hsl(0, 0%, 10%);
+}
+
+#App {
+  width: 400px;
+  padding: 40px 30px;
+  border: 1px solid hsl(200, 100%, 90%);
+  border-radius: 10px;
+  background-color: hsl(200, 100%, 80%);
+}
+
+#interaction {
+  padding: 20px;
+  display: grid;
+  row-gap: 10px;
+  background-color: hsl(200, 100%, 85%);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#interaction-input {
+  padding: 10px;
+  border: 1px solid hsl(200, 100%, 60%);
+  border-radius: 10px;
+}
+
+#interaction-button {
+  padding: 10px;
+  border: 1px solid hsl(200, 100%, 60%);
+  border-radius: 10px;
+  background:hsl(200, 100%, 70%);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
+}
+
+#interaction-button:hover,
+#interaction-button:focus {
+  border: 1px solid hsl(200, 100%, 50%);
+  background:hsl(200, 100%, 60%);
+}
+
+#interaction-error {
+  font-size: 0.8rem;
+  color: red;
+}
+
+#display {
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  column-gap: 20px;
+  row-gap: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: hsl(200, 100%, 90%);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#current-temperature-key,
+#condition-key,
+#city-key,
+#city-key,
+#country-key,
+#time-key {
+  font-size: 0.8rem;
+}
+
+#condition-image-container,
+#current-temperature-value,
+#condition-value,
+#time-value,
+#city-value,
+#country-value {
+  justify-self: center;
+}
+
+#current-temperature-value {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+#condition-value,
+#time-value,
+#city-value,
+#country-value {
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+#condition-image-container {
+
+}
+
+#condition-image {
+  display: block;
+  background-color: white;
+  border-radius: 10px;
+}
