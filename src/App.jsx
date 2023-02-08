@@ -43,6 +43,7 @@ function App() {
         console.log(`imagePathTest:`, imagePathTest);
 
         setWeatherData({
+          // ^ update the weatherData STATE Object with the following key/value pairs
           currentTemperature: `${data.current.temp_c}°C`,
           conditionText: data.current.condition.text,
           conditionCode : data.current.condition.code,
@@ -50,7 +51,7 @@ function App() {
           city: data.location.name,
           country: data.location.country,
           image: data.current.condition.icon,
-          // ^ this is using the static image from the api
+          // ^ this is using the image from the api fetch (a CDN URL)
           customImage: imagePathTest
           // ^ this is an attempt to use an animated svg from /public/images/
         });
@@ -96,7 +97,7 @@ function App() {
       </div>
       <div id="display">
         <img id="image-path-test" src="/images/clear-day.svg" alt="" />
-        {/* ^ this image loads when the path is hardcoded(?) but doesn't work below */}
+        {/* ^ as a test, this image loads when the path is hardcoded(?) but doesn't work below */}
         <div id="condition-image-container">
           <img
             id="condition-image"
