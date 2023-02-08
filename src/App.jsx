@@ -36,7 +36,7 @@ function App() {
             "1189" : "rain.svg",
             "1195" : "rain.svg",
           }
-          return `/images/${imageSources[code.toString()]}`;
+          return `images/${imageSources[code.toString()]}`;
         }
 
         const imagePathTest = convertConditionCodeToImageSrc(data.current.condition.code);
@@ -96,7 +96,7 @@ function App() {
         <div id="interaction-error">{error}</div>
       </div>
       <div id="display">
-        <img id="image-path-test" src="/images/clear-day.svg" alt="" />
+        <img id="image-path-test" src="images/clear-day.svg" alt="" />
         {/* ^ as a test, this image loads when the path is hardcoded(?) but doesn't work below */}
         <div id="condition-image-container">
           <img
