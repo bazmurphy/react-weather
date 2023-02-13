@@ -1,5 +1,5 @@
 const Loading = () => {
-  console.log(`Loading function ran`);
+  console.log(`Loading ran`);
 
   return (
     <div id="loading-container">

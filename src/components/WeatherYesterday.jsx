@@ -2,7 +2,7 @@ import WeatherImage from "./WeatherImage";
 import reverseDate from "../helperFunctions/reverseDate";
 
 const WeatherYesterday = ({historyData}) => {
-  console.log(`Yesterday function ran`)
+  console.log(`Yesterday ran`)
   // console.log(`Yesterday historyData`, historyData);
   
   return (

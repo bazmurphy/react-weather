@@ -1,5 +1,5 @@
 const ErrorMessage = ({currentError}) => {
-  console.log(`ErrorMessage function ran`);
+  console.log(`ErrorMessage ran`);
   // console.log(`ErrrorMessage currentError`, currentError);
 
   // API Error Codes

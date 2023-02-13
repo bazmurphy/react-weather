@@ -3,7 +3,7 @@ import WeatherYesterday from "./WeatherYesterday";
 import WeatherTomorrow from "./WeatherTomorrow";
 
 const WeatherDisplay = ({currentData, historyData, forecastData}) => {
-  console.log(`WeatherDisplay function ran`);
+  console.log(`WeatherDisplay ran`);
   // console.log(`WeatherDisplay currentData`, currentData);
   // console.log(`WeatherDisplay historyData`, historyData);
   // console.log(`WeatherDisplay forecastData`, forecastData);

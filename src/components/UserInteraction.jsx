@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ErrorMessage from './ErrorMessage';
 
 const UserInteraction = ({setLocation, currentError}) => {
-  console.log(`UserInteraction function ran`);
+  console.log(`UserInteraction ran`);
   
   const [input, setInput] = useState("");
 

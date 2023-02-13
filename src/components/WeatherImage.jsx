@@ -1,5 +1,5 @@
 const WeatherImage = ({condition, isDay, id}) => {
-  console.log(`WeatherImage function ran`);
+  console.log(`WeatherImage ran`);
   // console.log(`WeatherImage condition`, condition);
   // console.log(`WeatherImage isDay`, isDay);
   // console.log(`WeatherImage id`, id);

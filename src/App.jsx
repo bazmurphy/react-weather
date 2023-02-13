@@ -1,6 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { useEffect, useState } from 'react';
+import APIKEY from './env/APIKEY';
 import useFetch from './customHooks/useFetch';
 import UserInteraction from './components/UserInteraction';
 import Loading from "./components/Loading";
@@ -9,22 +10,17 @@ import getYesterdaysDate from './helperFunctions/getYesterdaysDate';
 import './App.css';
 
 const App = () => {
+  console.log(`App ran`);
 
+  // the state string that triggers the useEffect, which is set by the input text field (inside UserInteraction.jsx)
   const [location, setLocation] = useState("London");
-  // ^ the state string that triggers the useEffect, which is set by the input text field (inside UserInteraction.jsx)
-
-  const APIKEY = `51178a0aeac643629d5204449230702`;
-  // ^ this should really be stored in an .env file
   
-  const yesterdaysDate = getYesterdaysDate();
-  console.log(`yesterdaysDate:`, yesterdaysDate);
-
   // current.json
   const current = `https://api.weatherapi.com/v1/current.json?key=${APIKEY}&q=${location}&aqi=no`;
   const { loading : currentLoading, data: currentData, error: currentError } = useFetch(current);
 
   // history.json
-  const history = `https://api.weatherapi.com/v1/history.json?key=${APIKEY}&q=${location}&dt=${yesterdaysDate}`;
+  const history = `https://api.weatherapi.com/v1/history.json?key=${APIKEY}&q=${location}&dt=${(getYesterdaysDate())}`;
   const { loading: historyLoading, data: historyData, error: historyError } = useFetch(history);
 
   // forecast.json
@@ -32,7 +28,7 @@ const App = () => {
   const { loading : forecastLoading, data: forecastData, error: forecastError } = useFetch(forecast);
 
   useEffect(() => {
-    console.log(`App.jsx useEffect ran`);
+    console.log(`App useEffect ran`);
   }, [location]);
 
   return (

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const useFetch = (url) => {
-  console.log(`useFetch function ran`);
+  console.log(`useFetch ran`);
 
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -12,7 +12,7 @@ const useFetch = (url) => {
         try {
           const response = await fetch(url);
           const responseJson = await response.json();
-          console.log(`useFetch responseJson: `, responseJson);
+          // console.log(`useFetch responseJson: `, responseJson);
           if (!response.ok) {
             const errorObject = {
               response : {
@@ -24,6 +24,7 @@ const useFetch = (url) => {
             throw errorObject;
           }
           setData(responseJson);
+          setError(null); // is this neccessary(?)
         } catch (errorObject) {
           setError(errorObject);
         } finally {

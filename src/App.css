@@ -68,7 +68,7 @@ body {
   grid-template-areas: 
     "interaction-error-to-user interaction-error-to-user"
     "interaction-error-http-response interaction-error-api";
-  border: 1px solid black;
+  border: 1px solid hsla(0, 0%, 100%, 0.4);
   row-gap: 5px;
 }
 
