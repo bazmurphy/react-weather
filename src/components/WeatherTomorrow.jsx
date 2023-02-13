@@ -2,8 +2,8 @@ import WeatherImage from "./WeatherImage";
 import reverseDate from "../helperFunctions/reverseDate";
 
 const WeatherTomorrow = ({forecastData}) => {
-  console.log(`Tomorrow ran`)
-  // console.log(`Tomorrow forecastData`, forecastData);
+  console.log(`WeatherTomorrow ran`)
+  // console.log(`WeatherTomorrow forecastData`, forecastData);
   
   return (
     <div id="tomorrow-container">

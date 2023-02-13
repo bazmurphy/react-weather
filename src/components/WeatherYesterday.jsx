@@ -2,8 +2,8 @@ import WeatherImage from "./WeatherImage";
 import reverseDate from "../helperFunctions/reverseDate";
 
 const WeatherYesterday = ({historyData}) => {
-  console.log(`Yesterday ran`)
-  // console.log(`Yesterday historyData`, historyData);
+  console.log(`WeatherYesterday ran`)
+  // console.log(`WeatherYesterday historyData`, historyData);
   
   return (
     <div id="yesterday-container">
