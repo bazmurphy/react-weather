@@ -4,39 +4,44 @@
   box-sizing: border-box;
   margin: 0;
   font-family: "Montserrat";
-  font-size: 1rem;
+  font-size: 16px;
 }
 
 body {
-  height: 90vh;
   display: grid;
   justify-content: center;
-  align-content: center;
   background-color: hsl(0, 0%, 10%);
+  padding: 10px;
 }
 
-#App {
-  max-width: 400px;
-  padding: 40px 30px;
-  border: 1px solid hsl(200, 100%, 90%);
+#app-container {
+  padding: 10px;
+  /* border: 1px solid hsl(200, 100%, 90%); */
   border-radius: 10px;
   background-color: hsl(200, 100%, 80%);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 8px;
+}
+
+#app-subcontainer {
+  width: 350px;
+  padding: 15px;
+  display: grid;
+  row-gap: 10px;
+  border-radius: 10px;
+  background-color: hsl(200, 100%, 85%);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 8px;
 }
 
 #interaction {
-  padding: 20px 20px 10px 20px;
   display: grid;
   row-gap: 10px;
-  background-color: hsl(200, 100%, 85%);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #interaction-input {
   padding: 10px;
   border: 1px solid hsl(200, 100%, 60%);
   border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
 }
 
 #interaction-button {
@@ -56,61 +61,228 @@ body {
   background:hsl(200, 100%, 60%);
 }
 
-#interaction-error {
-  color: red;
-  font-size: 0.8rem;
+#interaction-error-container {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+    "interaction-error-to-user interaction-error-to-user"
+    "interaction-error-http-response interaction-error-api";
+  border: 1px solid black;
+  row-gap: 5px;
+}
+
+#interaction-error-to-user {
+  grid-area: interaction-error-to-user;
+}
+
+#interaction-error-to-user > * {
+  color: darkred;
+  font-size: 0.9rem;
+}
+
+#interaction-error-http-response {
+  grid-area: interaction-error-http-response;
+}
+
+#interaction-error-http-response > * {
+  color: darkblue;
+  font-size: 0.7rem;
+}
+
+#interaction-error-api {
+  grid-area: interaction-error-api;
+}
+
+#interaction-error-api > * {
+  color: darkblue;
+  font-size: 0.7rem;
+}
+
+#loading-container {
+  
+}
+
+#loading-text {
+
+}
+
+#loading-image-container {
+
+}
+
+#loading-image {
+  
 }
 
 #weather-display {
-  padding: 0 30px 30px 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+    "today-container today-container"
+    "yesterday-container tomorrow-container";
+  background: hsl(200, 100%, 90%);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 8px;
+  border-radius: 10px;
+}
+
+#today-container {
+  grid-area: today-container;
+  padding: 20px;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-template-areas: "condition-image-container condition-image-container";
-  column-gap: 10px;
+  grid-template-areas:
+    "today-location today-location"
+    "today-title today-date"
+    "today-image-container today-image-container";
   row-gap: 10px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  background: hsl(200, 100%, 90%);
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  column-gap: 10px;
 }
 
-#current-temperature-key,
-#condition-key,
-#city-key,
-#city-key,
-#country-key,
-#time-key {
-  font-size: 0.8rem;
+#today-location {
+  grid-area: today-location;
+  display: grid;
+  justify-items: center;
+  align-items: center;
 }
 
-#current-temperature-value,
-#condition-value,
-#time-value,
-#city-value,
-#country-value {
-  text-align: center;
-}
-
-#current-temperature-value {
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-#condition-value,
-#time-value,
-#city-value,
-#country-value {
-  font-size: 0.9rem;
+#today-location-name {
+  font-size: 1.8rem;
   font-weight: 600;
 }
 
-#condition-image-container {
-  grid-area: condition-image-container;
+#today-location-country {
+  font-size: 0.8rem;
+  font-weight: 500;
 }
 
-#condition-image {
-  margin: 0 auto;
-  width: 60%;
+#today-title {
+  grid-area: today-title;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+#today-date {
+  grid-area: today-date;
+  justify-self: end;
+  font-weight: 500;
+}
+
+#today-image-container {
+  grid-area: today-image-container;
+  background: radial-gradient(circle, hsl(0, 0%, 100%) 0%, hsl(200, 100%, 90%) 60%);
+  display: flex;
+  justify-content: center;
+}
+
+#today-image {
+  max-height: 200px;
   display: block;
-  filter: drop-shadow(10px 10px 10px hsla(0,0%,0%,0.25));
+  filter: drop-shadow(1px 1px 3px hsla(0,0%,0%,0.75));
+}
+
+#today-current-temperature-key,
+#today-condition-key,
+#today-time-key {
+  font-size: 0.8rem;
+}
+
+#today-current-temperature-value,
+#today-condition-value,
+#today-time-value {
+  text-align: center;
+}
+
+#today-current-temperature-value {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+#today-condition-value {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+#today-time-value {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+#yesterday-container {
+  border-top: 1px solid hsla(0, 0%, 100%, 0.4);
+  border-right: 1px solid hsla(0, 0%, 100%, 0.4);
+  grid-area: yesterday-container;
+  padding: 10px;
+  display: grid;
+  align-content: start;
+}
+
+#yesterday-title {
+  font-weight: 500;
+  justify-self: center;
+}
+
+#yesterday-date {
+  font-size: 0.8rem;
+  justify-self: center;
+}
+
+#yesterday-image-container {
+  background: radial-gradient(circle, hsl(0, 0%, 100%) 0%, hsl(200, 100%, 90%) 60%);
+  display: flex;
+  justify-content: center;
+}
+
+#yesterday-image {
+  max-height: 100px;
+  display: block;
+  filter: drop-shadow(1px 1px 4px hsla(0,0%,0%,0.6));
+}
+
+#yesterday-average-temperature-key {
+  justify-self: center;
+}
+
+#yesterday-average-temperature-value {
+  justify-self: center;
+  font-weight: 600;
+}
+
+#tomorrow-container {
+  border-top: 1px solid hsla(0, 0%, 100%, 0.5);
+  grid-area: tomorrow-container;
+  padding: 10px;
+  display: grid;
+  align-content: start;
+}
+
+#tomorrow-title {
+  font-weight: 500;
+  justify-self: center;
+}
+
+#tomorrow-date {
+  font-size: 0.8rem;
+  justify-self: center;
+}
+
+#tomorrow-image-container {
+  background: radial-gradient(circle, hsl(0, 0%, 100%) 0%, hsl(200, 100%, 90%) 60%);
+  display: flex;
+  justify-content: center;
+}
+
+#tomorrow-image {
+  max-height: 100px;
+  display: block;
+  filter: drop-shadow(1px 1px 4px hsla(0,0%,0%,0.6));
+}
+
+#tomorrow-average-temperature-key {
+  justify-self: center;
+}
+
+#tomorrow-average-temperature-value {
+  justify-self: center;
+  font-weight: 600;
 }

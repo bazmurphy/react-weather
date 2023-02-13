@@ -1,72 +1,46 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { useEffect, useState } from 'react';
-// import getWeatherDataFromApi from './getWeatherDataFromApi';
-import UserInteraction from './UserInteraction';
-import WeatherDisplay from './WeatherDisplay';
+import useFetch from './customHooks/useFetch';
+import UserInteraction from './components/UserInteraction';
+import Loading from "./components/Loading";
+import WeatherDisplay from './components/WeatherDisplay';
+import getYesterdaysDate from './helperFunctions/getYesterdaysDate';
 import './App.css';
 
 const App = () => {
 
   const [location, setLocation] = useState("London");
-  // ^ the state string that triggers the useEffect, and is set by the input text field
-  const [weatherData, setWeatherData] = useState({});
-  // ^ the state object that stores the API fetch data
-  const [loading, setLoading] = useState(true);
-  // ^ why can't i set this to false initially(???)
-  const [errorOccurred, setErrorOccurred] = useState(false);
-  // ^ the state string that toggles the error message
+  // ^ the state string that triggers the useEffect, which is set by the input text field (inside UserInteraction.jsx)
+
+  const APIKEY = `51178a0aeac643629d5204449230702`;
+  // ^ this should really be stored in an .env file
+  
+  const yesterdaysDate = getYesterdaysDate();
+  console.log(`yesterdaysDate:`, yesterdaysDate);
+
+  // current.json
+  const current = `https://api.weatherapi.com/v1/current.json?key=${APIKEY}&q=${location}&aqi=no`;
+  const { loading : currentLoading, data: currentData, error: currentError } = useFetch(current);
+
+  // history.json
+  const history = `https://api.weatherapi.com/v1/history.json?key=${APIKEY}&q=${location}&dt=${yesterdaysDate}`;
+  const { loading: historyLoading, data: historyData, error: historyError } = useFetch(history);
+
+  // forecast.json
+  const forecast = `https://api.weatherapi.com/v1/forecast.json?key=${APIKEY}&q=${location}&days=2&aqi=no&alerts=no`;
+  const { loading : forecastLoading, data: forecastData, error: forecastError } = useFetch(forecast);
 
   useEffect(() => {
-    
-    const getWeatherDataFromApi = async (location) => {
-      try {
-        const APIKEY = `51178a0aeac643629d5204449230702`;
-        // ^ this should really be stored in an .env file
-        const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${APIKEY}&q=${location}&aqi=no`);
-        if (response.ok && response.status === 200 ) {
-          const data = await response.json();
-          console.log("getWeatherDataFromApi Result:", data);
-          setWeatherData(data);
-          setLoading(false);
-          setErrorOccurred(false);
-        } else {
-          setErrorOccurred(true);
-          setLoading(false);
-        }
-        // HOW TO HANDLE ERROR (404 etc) IN A REACTY WAY...
-      } catch (error) {
-        console.log("getWeatherDataFromApi Error:", error);
-      }
-    }
-
-    getWeatherDataFromApi(location);
-
-    // (async () => {
-    //     const data = await getWeatherDataFromApi(location);
-    //     console.log(`useEffect anonymous async function ran`, data)
-    //     if (data) {
-    //       setWeatherData(data);
-    //       setLoading(false);
-    //       setErrorOccurred(false);
-    //     } else {
-    //       setWeatherData({});
-    //       setErrorOccurred(true);
-    //     }
-    // })();
-    // ^ immediately invoked async function expression
-
+    console.log(`App.jsx useEffect ran`);
   }, [location]);
-  // ^ location is the dependency that triggers the useEffect
 
   return (
-    <div id="App">
-      <UserInteraction setLocation={setLocation} errorOccurred={errorOccurred} />
-      {!loading ? 
-        <WeatherDisplay weatherData={weatherData} /> 
-        : 
-        <div>Loading..</div>
-      }
+    <div id="app-container">
+      <div id="app-subcontainer">
+        <UserInteraction setLocation={setLocation} currentError={currentError} /> 
+        {currentLoading && historyLoading && forecastLoading ? <Loading /> : <WeatherDisplay currentData={currentData} forecastData={forecastData} historyData={historyData} /> }
+      </div>
     </div>
   );
 };

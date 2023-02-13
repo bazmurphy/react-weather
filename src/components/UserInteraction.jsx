@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import ErrorMessage from './ErrorMessage';
 
-const UserInteraction = ({setLocation, errorOccurred}) => {
+const UserInteraction = ({setLocation, currentError}) => {
   console.log(`UserInteraction function ran`);
   
   const [input, setInput] = useState("");
-  // ^ the state string that comes from the input text field
 
   return (
     <div id="interaction">
@@ -18,18 +17,18 @@ const UserInteraction = ({setLocation, errorOccurred}) => {
         onKeyDown={(event) => {
           if(event.key === "Enter") {
             setLocation(input);
-            setInput("");
+            // setInput("");
           }}}
       />
+      {currentError && <ErrorMessage currentError={currentError}/>}
       <button
         id="interaction-button"
         onClick={() => {
           setLocation(input);
-          setInput("");
+          // setInput("");
         }}>
         Check The Weather
       </button>
-      <ErrorMessage errorOccurred={errorOccurred}/>
     </div>
   );
 };
