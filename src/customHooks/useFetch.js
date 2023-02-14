@@ -24,7 +24,7 @@ const useFetch = (url) => {
             throw errorObject;
           }
           setData(responseJson);
-          setError(null); // is this neccessary(?)
+          setError(null); // is this correct here?
         } catch (errorObject) {
           setError(errorObject);
         } finally {

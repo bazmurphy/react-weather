@@ -34,8 +34,18 @@ const App = () => {
   return (
     <div id="app-container">
       <div id="app-subcontainer">
-        <UserInteraction setLocation={setLocation} currentError={currentError} /> 
-        {currentLoading && historyLoading && forecastLoading ? <Loading /> : <WeatherDisplay currentData={currentData} forecastData={forecastData} historyData={historyData} /> }
+        <UserInteraction 
+          setLocation={setLocation} 
+          currentError={currentError} 
+        />
+        {(currentLoading || historyLoading || forecastLoading) && 
+        <Loading />}
+        {(currentData && forecastData && historyData) &&
+        <WeatherDisplay 
+          currentData={currentData} 
+          forecastData={forecastData} 
+          historyData={historyData} 
+        />}
       </div>
     </div>
   );
