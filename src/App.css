@@ -3,8 +3,11 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
   font-family: "Montserrat";
   font-size: 16px;
+  color: hsl(0, 0%, 15%);
+  text-shadow: 1px 1px 1px hsla(0, 0%, 0%, 0.1);
 }
 
 body {
@@ -16,13 +19,16 @@ body {
 
 #app-container {
   width: 350px;
-  padding: 15px;
+  padding: 20px 15px;
   display: grid;
   row-gap: 10px;
   border: 1px solid hsla(0, 0%, 100%, 0.5);
   border-radius: 10px;
-  background-color: hsl(200, 100%, 80%);
+  /* background-color: hsl(200, 100%, 80%); */
+  /* background: linear-gradient(hsl(205, 100%, 85%) 0%, hsl(205, 100%, 70%) 20%, hsl(205, 100%, 80%) 60%, hsl(205, 100%, 90%) 100%); */
+  background: linear-gradient(hsl(200, 100%, 60%) 0%, hsl(200, 100%, 80%) 20%, hsl(200, 100%, 92%) 100%);
   box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 8px;
+  transition: 0.5s;
 }
 
 #interaction {
@@ -40,31 +46,44 @@ body {
 
 #interaction-button {
   padding: 10px;
-  border: 1px solid hsl(200, 100%, 60%);
+  /* border: 1px solid hsl(200, 100%, 60%); */
+  border: 1px solid hsl(200, 100%, 45%);
   border-radius: 10px;
-  background:hsl(200, 100%, 70%);
+  background:hsl(200, 100%, 55%);
+  /* background:hsl(200, 100%, 70%); */
   cursor: pointer;
   font-family: inherit;
   font-weight: 600;
   font-size: 0.9rem;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
-  transition: 0.4s;
 }
 
-#interaction-button:hover,
-#interaction-button:focus {
-  border: 1px solid hsl(200, 100%, 45%);
-  background:hsl(200, 100%, 55%);
+#interaction-button:hover {
+  /* border: 1px solid hsl(200, 100%, 45%); */
+  background:hsl(200, 100%, 90%);
+}
+
+#interaction-error-form {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: hsl(0, 100%, 40%);
 }
 
 #interaction-error-container {
+  display: grid;
+  row-gap: 10px;
   padding: 10px;
+  border: 1px solid hsla(0, 0%, 100%, 0.4);
+  border-radius: 10px;
+}
+
+
+#interaction-error-request {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: 
     "interaction-error-to-user interaction-error-to-user"
     "interaction-error-http-response interaction-error-api";
-  border: 1px solid hsla(0, 0%, 100%, 0.4);
   row-gap: 5px;
 }
 
@@ -73,7 +92,7 @@ body {
 }
 
 #interaction-error-to-user > * {
-  color: darkred;
+  color: hsl(0, 100%, 40%);
   font-size: 0.9rem;
 }
 
@@ -82,8 +101,8 @@ body {
 }
 
 #interaction-error-http-response > * {
-  color: darkblue;
-  font-size: 0.7rem;
+  color: hsl(250, 100%, 20%);
+  font-size: 0.75rem;
 }
 
 #interaction-error-api {
@@ -91,8 +110,8 @@ body {
 }
 
 #interaction-error-api > * {
-  color: darkblue;
-  font-size: 0.7rem;
+  color: hsl(250, 100%, 20%);
+  font-size: 0.75rem;
 }
 
 #loading-container {
@@ -108,7 +127,7 @@ body {
 }
 
 #loading-image-container {
-
+  
 }
 
 #loading-image {
@@ -130,17 +149,17 @@ body {
   grid-area: today-container;
   padding: 20px;
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-areas:
-    "today-location today-location"
-    "today-title today-date"
-    "today-image-container today-image-container";
+  /* grid-template-areas:
+    "today-location"
+    "today-title-time-date"
+    "today-image-container"
+    "today-weather-information"; */
   row-gap: 10px;
   column-gap: 10px;
 }
 
 #today-location {
-  grid-area: today-location;
+  /* grid-area: today-location; */
   display: grid;
   justify-items: center;
   align-items: center;
@@ -156,20 +175,28 @@ body {
   font-weight: 500;
 }
 
+#today-title-time-date {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-content: center;
+}
+
 #today-title {
-  grid-area: today-title;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+#today-time {
+  font-size: 1rem;
   font-weight: 500;
 }
 
 #today-date {
-  grid-area: today-date;
-  justify-self: end;
+  font-size: 1rem;
   font-weight: 500;
 }
 
 #today-image-container {
-  grid-area: today-image-container;
   background: radial-gradient(circle, hsl(0, 0%, 100%) 0%, hsl(200, 100%, 90%) 60%);
   display: flex;
   justify-content: center;
@@ -181,15 +208,20 @@ body {
   filter: drop-shadow(1px 1px 3px hsla(0,0%,0%,0.75));
 }
 
+#today-temperature-condition {
+  padding: 5px 0;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
+}
+
 #today-current-temperature-key,
-#today-condition-key,
-#today-time-key {
-  font-size: 0.8rem;
+#today-condition-key {
+ font-size: 0.8rem;
 }
 
 #today-current-temperature-value,
-#today-condition-value,
-#today-time-value {
+#today-condition-value {
   text-align: center;
 }
 
@@ -200,13 +232,51 @@ body {
 
 #today-condition-value {
   font-size: 1.4rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
-#today-time-value {
-  font-size: 1.1rem;
-  font-weight: 500;
+#today-average-min-max {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: 
+    "today-average-key today-minimum-key today-maximum-key"
+    "today-average-value today-minimum-value today-maximum-value";
 }
+
+#today-average-key {
+  grid-area: today-average-key;
+}
+#today-average-value {
+  grid-area: today-average-value;
+}
+#today-minimum-key {
+  grid-area: today-minimum-key;
+}
+#today-minimum-value {
+  grid-area: today-minimum-value;
+}
+#today-maximum-key {
+  grid-area: today-maximum-key;
+}
+#today-maximum-value {
+  grid-area: today-maximum-value;
+}
+
+#today-average-key, 
+#today-minimum-key,
+#today-maximum-key {
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+#today-average-value, 
+#today-minimum-value,
+#today-maximum-value {
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
 
 #yesterday-container {
   border-top: 1px solid hsla(0, 0%, 100%, 0.4);
@@ -241,6 +311,7 @@ body {
 
 #yesterday-average-temperature-key {
   justify-self: center;
+  font-size: 0.8rem;
 }
 
 #yesterday-average-temperature-value {
@@ -280,6 +351,7 @@ body {
 
 #tomorrow-average-temperature-key {
   justify-self: center;
+  font-size: 0.8rem;
 }
 
 #tomorrow-average-temperature-value {

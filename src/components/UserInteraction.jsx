@@ -5,6 +5,7 @@ const UserInteraction = ({setLocation, currentError}) => {
   console.log(`UserInteraction ran`);
   
   const [input, setInput] = useState("");
+  const [formError, setFormError] = useState(null);
 
   return (
     <div id="interaction">
@@ -16,14 +17,19 @@ const UserInteraction = ({setLocation, currentError}) => {
         onChange={(event) => setInput(event.target.value)}
         onKeyDown={(event) => {
           if(event.key === "Enter") {
+            setFormError(null);
             setLocation(input);
             // setInput("");
           }}}
       />
-      {currentError && <ErrorMessage currentError={currentError}/>}
+      {(formError || currentError) && <ErrorMessage formError={formError} currentError={currentError}/>}
       <button
         id="interaction-button"
         onClick={() => {
+          if (!input) {
+            return setFormError("Error: Please enter a location...");
+          }
+          setFormError(null);
           setLocation(input);
           // setInput("");
         }}>

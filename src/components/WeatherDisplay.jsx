@@ -10,7 +10,7 @@ const WeatherDisplay = ({currentData, historyData, forecastData}) => {
   
   return (
     <div id="weather-display">
-      <WeatherToday currentData={currentData}/>
+      <WeatherToday currentData={currentData} forecastData={forecastData}/>
       <WeatherYesterday historyData={historyData} />
       <WeatherTomorrow forecastData={forecastData} />
     </div>

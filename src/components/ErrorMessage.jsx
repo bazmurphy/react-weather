@@ -1,5 +1,6 @@
-const ErrorMessage = ({currentError}) => {
+const ErrorMessage = ({formError, currentError}) => {
   console.log(`ErrorMessage ran`);
+  // console.log(`ErrrorMessage formError`, formError);
   // console.log(`ErrrorMessage currentError`, currentError);
 
   // API Error Codes
@@ -18,20 +19,29 @@ const ErrorMessage = ({currentError}) => {
 
   return (
     <div id="interaction-error-container">
-      <div id="interaction-error-to-user">
-        <h4>Error To User:</h4>
-        <p>This location could not be found, please try again...</p>
+      {formError &&   
+      <div id="interaction-error-form">
+        Error: Please enter a location...
       </div>
-      <div id="interaction-error-http-response">
-        <h4>Response Status</h4>
-        <p>Code: {currentError.response.status}</p>
-        <p>Text: {currentError.response.statusText}</p>
+      }
+      {currentError && 
+      <div id="interaction-error-request">
+        <div id="interaction-error-to-user">
+          <h4>Error: (to the User)</h4>
+          <p>This location could not be found, please try again...</p>
+        </div>
+        <div id="interaction-error-http-response">
+          <h4>Response Status:</h4>
+          <p>Code: {currentError.response.status}</p>
+          <p>Text: {currentError.response.statusText}</p>
+        </div>
+        <div id="interaction-error-api">
+          <h4>API Error:</h4>
+          <p>Code: {currentError.error.code}</p>
+          <p>Message: {currentError.error.message}</p>
+        </div>
       </div>
-      <div id="interaction-error-api">
-        <h4>API Error</h4>
-        <p>Code: {currentError.error.code}</p>
-        <p>Message: {currentError.error.message}</p>
-      </div>
+      }
     </div>
   )
 }

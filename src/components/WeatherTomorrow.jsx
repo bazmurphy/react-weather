@@ -7,7 +7,7 @@ const WeatherTomorrow = ({forecastData}) => {
   
   return (
     <div id="tomorrow-container">
-      <h2 id="tomorrow-title">Tomorrow</h2>
+      <span id="tomorrow-title">Tomorrow</span>
       <span id="tomorrow-date">{reverseDate(forecastData.forecast.forecastday[1].date)}</span>
       <div id="tomorrow-image-container">
         <WeatherImage condition={forecastData.forecast.forecastday[1].day.condition} isDay={true}  id={"tomorrow-image"}/>
