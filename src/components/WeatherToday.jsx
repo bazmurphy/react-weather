@@ -3,7 +3,7 @@ import reverseDate from "../helperFunctions/reverseDate";
 
 const WeatherToday = ({currentData, forecastData}) => {
   console.log(`WeatherToday ran`);
-  console.log(`WeatherToday function forecastData`, currentData);
+  console.log(`WeatherToday function currentData`, currentData);
   console.log(`WeatherToday function forecastData`, forecastData);
   
   return (
