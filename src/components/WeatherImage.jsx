@@ -24,10 +24,13 @@ const WeatherImage = ({condition, isDay, id}) => {
       image = `mist.svg`;
       break;
     case 1063:
-      image = `rain.svg`;
+      image = `partly-cloudy-${dayOrNight}-drizzle.svg`;
       break;
     case 1135: 
       image = `fog-${dayOrNight}.svg`;
+      break;
+    case 1153:
+      image = `drizzle.svg`;
       break;
     case 1183:
       image = `rain.svg`;
@@ -54,7 +57,10 @@ const WeatherImage = ({condition, isDay, id}) => {
   return (
       <img
         id={id}
+        // src={condition.icon}
+        // ^ static image from the API
         src={`images/${image}`}
+        // ^ custom animated svg image
         alt={condition.text}
       />
   );

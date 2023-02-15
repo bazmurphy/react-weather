@@ -16,18 +16,22 @@ const UserInteraction = ({setLocation, currentError}) => {
         value={input}
         onChange={(event) => setInput(event.target.value)}
         onKeyDown={(event) => {
-          if(event.key === "Enter") {
-            setFormError(null);
+          if(input && event.key === "Enter") {
             setLocation(input);
             // setInput("");
           }}}
       />
-      {(formError || currentError) && <ErrorMessage formError={formError} currentError={currentError}/>}
+      {(formError || currentError) && 
+        <ErrorMessage 
+          formError={formError} 
+          currentError={currentError}
+        />
+      }
       <button
         id="interaction-button"
         onClick={() => {
           if (!input) {
-            return setFormError("Error: Please enter a location...");
+            return setFormError(true);
           }
           setFormError(null);
           setLocation(input);
