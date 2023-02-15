@@ -24,11 +24,8 @@ body {
   row-gap: 10px;
   border: 1px solid hsla(0, 0%, 100%, 0.5);
   border-radius: 10px;
-  /* background-color: hsl(200, 100%, 80%); */
-  /* background: linear-gradient(hsl(205, 100%, 85%) 0%, hsl(205, 100%, 70%) 20%, hsl(205, 100%, 80%) 60%, hsl(205, 100%, 90%) 100%); */
   background: linear-gradient(hsl(200, 100%, 60%) 0%, hsl(200, 100%, 80%) 20%, hsl(200, 100%, 92%) 100%);
   box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 8px;
-  transition: 0.5s;
 }
 
 #interaction {
@@ -64,8 +61,17 @@ body {
 }
 
 #interaction-error-form {
+}
+
+#interaction-error-form-title {
   font-size: 0.9rem;
   font-weight: 600;
+  color: hsl(0, 100%, 40%);
+}
+
+#interaction-error-form-message {
+  font-size: 0.9rem;
+  font-weight: 400;
   color: hsl(0, 100%, 40%);
 }
 
@@ -76,7 +82,6 @@ body {
   border: 1px solid hsla(0, 0%, 100%, 0.4);
   border-radius: 10px;
 }
-
 
 #interaction-error-request {
   display: grid;
@@ -91,16 +96,33 @@ body {
   grid-area: interaction-error-to-user;
 }
 
-#interaction-error-to-user > * {
-  color: hsl(0, 100%, 40%);
+#interaction-error-to-user-title {
   font-size: 0.9rem;
+  font-weight: 600;
+  color: hsl(0, 100%, 40%);
+}
+
+#interaction-error-to-user-message {
+  font-size: 0.9rem;
+  color: hsl(0, 100%, 40%);
 }
 
 #interaction-error-http-response {
   grid-area: interaction-error-http-response;
 }
 
-#interaction-error-http-response > * {
+#interaction-error-http-response-title {
+  color: hsl(250, 100%, 20%);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+#interaction-error-http-response-code {
+  color: hsl(250, 100%, 20%);
+  font-size: 0.75rem;
+}
+
+#interaction-error-http-response-text {
   color: hsl(250, 100%, 20%);
   font-size: 0.75rem;
 }
@@ -109,7 +131,18 @@ body {
   grid-area: interaction-error-api;
 }
 
-#interaction-error-api > * {
+#interaction-error-api-title {
+  color: hsl(250, 100%, 20%);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+#interaction-error-api-code {
+  color: hsl(250, 100%, 20%);
+  font-size: 0.75rem;
+}
+
+#interaction-error-api-message {
   color: hsl(250, 100%, 20%);
   font-size: 0.75rem;
 }
@@ -149,17 +182,39 @@ body {
   grid-area: today-container;
   padding: 20px;
   display: grid;
-  /* grid-template-areas:
-    "today-location"
-    "today-title-time-date"
-    "today-image-container"
-    "today-weather-information"; */
   row-gap: 10px;
   column-gap: 10px;
 }
 
+#today-title-date-time {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+   "today-title today-date"
+   "today-title today-time";
+}
+
+#today-title {
+  grid-area: today-title;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+#today-date {
+  grid-area: today-date;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: end;
+}
+
+#today-time {
+  grid-area: today-time;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: end;
+}
+
 #today-location {
-  /* grid-area: today-location; */
   display: grid;
   justify-items: center;
   align-items: center;
@@ -172,27 +227,6 @@ body {
 
 #today-location-country {
   font-size: 0.8rem;
-  font-weight: 500;
-}
-
-#today-title-time-date {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-content: center;
-}
-
-#today-title {
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-#today-time {
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-#today-date {
-  font-size: 1rem;
   font-weight: 500;
 }
 
@@ -288,7 +322,7 @@ body {
 }
 
 #yesterday-title {
-  font-weight: 500;
+  font-weight: 600;
   justify-self: center;
 }
 
@@ -328,7 +362,7 @@ body {
 }
 
 #tomorrow-title {
-  font-weight: 500;
+  font-weight: 600;
   justify-self: center;
 }
 

@@ -10,7 +10,11 @@ const WeatherTomorrow = ({forecastData}) => {
       <span id="tomorrow-title">Tomorrow</span>
       <span id="tomorrow-date">{reverseDate(forecastData.forecast.forecastday[1].date)}</span>
       <div id="tomorrow-image-container">
-        <WeatherImage condition={forecastData.forecast.forecastday[1].day.condition} isDay={true}  id={"tomorrow-image"}/>
+        <WeatherImage 
+          condition={forecastData.forecast.forecastday[1].day.condition} 
+          isDay={true}  
+          id={"tomorrow-image"}
+        />
       </div>
       <span id="tomorrow-average-temperature-key">Average:</span>
       <span id="tomorrow-average-temperature-value">{`${forecastData.forecast.forecastday[1].day.avgtemp_c}°C`}</span>
