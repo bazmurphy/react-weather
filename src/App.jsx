@@ -12,18 +12,13 @@ import './App.css';
 const App = () => {
   console.log(`App ran`);
 
-  // the state string that triggers the useEffect, which is set by the input text field (inside UserInteraction.jsx)
+  // the State string that triggers the useEffect, which is set by the input text field (inside UserInteraction.jsx)
   const [location, setLocation] = useState("London");
   
-  // current.json
   const current = `https://api.weatherapi.com/v1/current.json?key=${APIKEY}&q=${location}&aqi=no`;
   const { loading : currentLoading, data: currentData, error: currentError } = useFetch(current);
-
-  // history.json
   const history = `https://api.weatherapi.com/v1/history.json?key=${APIKEY}&q=${location}&dt=${(getYesterdaysDate())}`;
   const { loading: historyLoading, data: historyData, error: historyError } = useFetch(history);
-
-  // forecast.json
   const forecast = `https://api.weatherapi.com/v1/forecast.json?key=${APIKEY}&q=${location}&days=2&aqi=no&alerts=no`;
   const { loading : forecastLoading, data: forecastData, error: forecastError } = useFetch(forecast);
 
@@ -32,8 +27,7 @@ const App = () => {
   }, [location]);
 
   return (
-    <div id="app-container">
-      <div id="app-subcontainer">
+      <div id="app-container">
         <UserInteraction 
           setLocation={setLocation} 
           currentError={currentError} 
@@ -47,7 +41,6 @@ const App = () => {
           historyData={historyData} 
         />}
       </div>
-    </div>
   );
 };
 

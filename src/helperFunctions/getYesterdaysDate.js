@@ -3,6 +3,7 @@ const formatDate = (date) => date.toISOString().slice(0, 10);
 const getYesterdaysDate = () => {
   const today = new Date(Date.now());
   // console.log(today);
+  
   const yesterday = new Date(today);
   yesterday.setHours(yesterday.getHours() - 24);
   // console.log(yesterday);
