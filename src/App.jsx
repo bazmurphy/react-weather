@@ -33,7 +33,7 @@ const App = () => {
         />
         {(currentLoading || historyLoading || forecastLoading ) && 
           <Loading />}
-        {(currentData || historyData || forecastData) &&
+        {(currentData && historyData && forecastData) &&
           <WeatherDisplay
             currentData={currentData}
             historyData={historyData}
