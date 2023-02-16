@@ -47,6 +47,9 @@ const WeatherImage = ({condition, isDay, id}) => {
     case 1219:
       image = `snow.svg`;
       break;
+    case 1225:
+      image = `snow.svg`;
+      break;
     case 1255:
       image = `snow.svg`;
       break;

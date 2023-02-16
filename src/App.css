@@ -8,6 +8,10 @@
   font-size: 16px;
   color: hsl(0, 0%, 15%);
   text-shadow: 1px 1px 1px hsla(0, 0%, 0%, 0.1);
+  /* font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
 }
 
 body {
